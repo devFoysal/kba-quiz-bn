@@ -1,0 +1,416 @@
+import React, { useEffect, useState } from "react";
+import Layout from "../components/LayoutNotCarousel";
+import axios from "axios";
+import cookie from "js-cookie";
+import Countdown from "react-countdown";
+import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+import {
+  setQuizStart,
+  setQuizLevel,
+  setQuizAnswer,
+  sendQuizStart,
+  submitAnswer,
+} from "../store/actions/quizAction";
+import { resetData } from "../store/actions/authAction";
+import Timer2 from "../components/Timer2";
+
+var numbers = {
+  0: "০",
+  1: "১",
+  2: "২",
+  3: "৩",
+  4: "৪",
+  5: "৫",
+  6: "৬",
+  7: "৭",
+  8: "৮",
+  9: "৯",
+};
+
+function replaceNumbers(input) {
+  var output = [];
+  for (var i = 0; i < input.length; ++i) {
+    if (numbers.hasOwnProperty(input[i])) {
+      output.push(numbers[input[i]]);
+    } else {
+      output.push(input[i]);
+    }
+  }
+  return output.join("");
+}
+
+const QuizOne = () => {
+  // const questions = [
+  //   {
+  //     questionText: "একাদশতম জাতীয় সংসদ নির্বাচন কবে অনুষ্ঠিত হবে?",
+  //     answerOptions: [
+  //       { answerText: "২৮শে ডিসেম্বর", isCorrect: false, id: 1 },
+  //       { answerText: "২৯শে ডিসেম্বর", isCorrect: false, id: 2 },
+  //       { answerText: "৩০শে ডিসেম্বর", isCorrect: true, id: 3 },
+  //       { answerText: "৩১শে ডিসেম্বর", isCorrect: false, id: 4 },
+  //     ],
+  //   },
+  //   {
+  //     questionText: "৩০শে ডিসেম্বর ২০১৮ কি বার?",
+  //     answerOptions: [
+  //       { answerText: "রবিবার", isCorrect: false, id: 1 },
+  //       { answerText: "সোমবার", isCorrect: true, id: 2 },
+  //       { answerText: "মঙ্গলবার", isCorrect: false, id: 3 },
+  //       { answerText: "বৃহস্পতিবার", isCorrect: false, id: 4 },
+  //     ],
+  //   },
+  //   {
+  //     questionText: "নির্বাচন কমিশন এবং নির্বাচন কমিশনারদের কে নিয়োগ দান করেন?",
+  //     answerOptions: [
+  //       { answerText: "প্রধানমন্ত্রী", isCorrect: true, id: 1 },
+  //       { answerText: "নির্বাচন কমিশন সচিবালয়", isCorrect: false, id: 2 },
+  //       { answerText: "মন্ত্রিপরিষদ", isCorrect: false, id: 3 },
+  //       { answerText: "রাষ্ট্রপতি", isCorrect: false, id: 4 },
+  //     ],
+  //   },
+  //   {
+  //     questionText: "একজন প্রার্থী নির্বাচনে কত টাকা খরচ করতে পারবেন?",
+  //     answerOptions: [
+  //       { answerText: "সর্বোচ্চ ১৫ লক্ষ টাকা", isCorrect: false, id: 1 },
+  //       { answerText: "সর্বোচ্চ ২০ লক্ষ টাকা", isCorrect: false, id: 2 },
+  //       { answerText: "সর্বোচ্চ ২৫ লক্ষ টাকা", isCorrect: false, id: 3 },
+  //       { answerText: "সর্বোচ্চ ৩০ লক্ষ টাকা", isCorrect: true, id: 4 },
+  //     ],
+  //   },
+  //   {
+  //     questionText: "বাংলাদেশের নির্বাচন ব্যবস্থা কি ধরনের?",
+  //     answerOptions: [
+  //       { answerText: "একক বিজয়ী ব্যবস্থা", isCorrect: false, id: 1 },
+  //       { answerText: "বহু বিজয়ী ব্যবস্থা", isCorrect: false, id: 2 },
+  //       { answerText: "পছন্দানুক্রম ব্যবস্থা", isCorrect: false, id: 3 },
+  //       {
+  //         answerText: "দলীয়-তালিকা আনুপাতিক প্রতিনিধিত্ব",
+  //         isCorrect: true,
+  //         id: 4,
+  //       },
+  //     ],
+  //   },
+  // ];
+  const { quizLevel, quizStart, answerLoading, finalResult } = useSelector(
+    state => state.quiz
+  );
+  const [quiz, setQuiz] = useState([]);
+  const [quizStartTime, setQuizStartTime] = useState("");
+  const [quizALL, setQuizALL] = useState([]);
+  const [questions, setQuestions] = useState([]);
+  const [duration, setDuration] = useState(null);
+  const [quizLoading, setQuizLoading] = useState(false);
+  const [quizError, setQuizError] = useState(
+    `দুঃখিত কুইজ প্রশ্ন প্রকাশ করা সম্ভব হচ্ছে না। আপনি কি লগ ইন করেছেন ? অথবা পেইজটি রিফ্রেশ করুন`
+  );
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    setQuizLoading(true);
+    axios.defaults.headers.common["Authorization"] = `Bearer ${cookie.get(
+      "token"
+    )}`;
+    axios
+      .get("quiz/all")
+      .then(res => {
+        if (res.data && res.data.data) {
+          let quizData = res.data.data.filter(e => e.id == quizLevel)[0];
+          setQuiz(quizData);
+          setQuizALL(res.data.data);
+          setTimeLeft(quizData.duration);
+          setQuestions(quizData.questions);
+          // dispatch(setQuizStart(true));
+          setQuizLoading(false);
+          setShowModal(true);
+        }
+      })
+      .catch(err => {
+        setQuizLoading(false);
+        console.log(err.response);
+        if (err.response && err.response.status == 401) {
+          dispatch(resetData());
+        } else if (err.response && err.response.status == 420) {
+          setQuizError(err.response.data.message);
+        }
+      });
+  }, []);
+
+  useEffect(() => {
+    let data = quizALL.filter(e => e.id == quizLevel)[0];
+    if (quizLevel >= 2 && quizLevel <= 3) {
+      setQuiz(data);
+      setCurrentQuestion(0);
+      setTimeLeft(data.duration);
+      setQuestions(data.questions);
+      dispatch(setQuizStart(true));
+      console.log(quizLevel, data);
+    }
+  }, [quizLevel]);
+
+  const [currentQuestion, setCurrentQuestion] = useState(0);
+  const [showScore, setShowScore] = useState(false);
+  const [score, setScore] = useState(0);
+  const [colorbtn, setColorbtn] = useState(false);
+  const [clickedId, setClickedId] = useState(null);
+  const [showModal, setShowModal] = useState(false);
+  const [timeLeft, setTimeLeft] = useState(duration);
+
+  const handleModal = (start = false) => {
+    setShowModal(!showModal);
+    if (start == true) {
+      dispatch(setQuizStart(true));
+      dispatch(sendQuizStart(+Date.now()));
+      setQuizStartTime(new Date().toLocaleTimeString());
+    }
+  };
+
+  const handleAnswerOptionClick = id => {
+    setClickedId(id);
+    setColorbtn(true);
+    dispatch(
+      setQuizAnswer({
+        answerId: id,
+        quizLevel,
+        time: timeLeft,
+      })
+    );
+    const nextQuestion = currentQuestion + 1;
+    if (nextQuestion < questions.length) {
+      setCurrentQuestion(nextQuestion);
+    } else {
+      if (quizLevel == 3) {
+        setShowScore(true);
+        dispatch(submitAnswer(+Date.now()));
+      }
+      dispatch(setQuizStart(false));
+      dispatch(setQuizLevel(quizLevel + 1));
+    }
+    setColorbtn(false);
+    setClickedId(null);
+  };
+
+  return (
+    <Layout>
+      <div className="quiz-app">
+        <div className="container">
+          <div className="row">
+            <div className="col-12 text-center">
+              {showScore ? (
+                <div className="row justify-content-center">
+                  <div className="col-lg-6 score-section-bg">
+                    <div className="score-section">
+                      {answerLoading ? (
+                        <span>
+                          {" "}
+                          আপনার কুইজ এর ফলাফল এর জন্য অনুগ্রহ করে অপেক্ষা
+                          করুন......{" "}
+                        </span>
+                      ) : (
+                        <>
+                          <h3>ফলাফল :</h3>
+                          <h5>{finalResult}</h5>
+                          <Link to="/leaderboard">
+                            <button className="btn lets-play ml-2">
+                              লিডারবোর্ড
+                            </button>
+                          </Link>
+                        </>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              ) : quizStart && !showModal ? (
+                <>
+                  <div className="question-section">
+                    <div className="row justify-content-center mb-5">
+                      <div className="col-lg-10">
+                        <div className="time-box">
+                          <div>
+                            <h5>
+                              কুইজ শুরুঃ{" "}
+                              {replaceNumbers(quizStartTime.toString())}
+                            </h5>
+                          </div>
+                          <div>
+                            <Countdown
+                              date={Date.now() + timeLeft}
+                              intervalDelay={100}
+                              renderer={Timer2}
+                              precision={3}
+                              onTick={e => {
+                                console.log(e);
+                                setTimeLeft(e.total);
+                              }}
+                              onComplete={e => {
+                                dispatch(setQuizLevel(quizLevel + 1));
+                                if (quizLevel == 3) {
+                                  dispatch(setQuizStart(false));
+                                  setShowScore(true);
+                                  dispatch(submitAnswer(+Date.now()));
+                                }
+                              }}
+                              onPause={e => {
+                                console.log("pause");
+                              }}
+                              onStop={e => {
+                                console.log("Stop");
+                              }}
+                            />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <h2 style={{ fontWeight: "bold" }} className="mb-4">
+                      {quiz && quiz.titleBn}
+                    </h2>
+                    <div className="row justify-content-center">
+                      <div className="col-lg-6">
+                        {/* <div className="question-count">
+                        <span>Question {currentQuestion + 1}</span>/
+                        {questions.length}
+                      </div> */}
+                        <div className="question-text">
+                          {questions.length > 0 &&
+                            questions[currentQuestion].titleBn}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  {questions.length > 0 && (
+                    <div className="answer-section">
+                      <div className="row">
+                        {questions[currentQuestion].answers.map(
+                          answerOption => (
+                            <div className="col-lg-6">
+                              <button
+                                className={
+                                  clickedId === answerOption.id
+                                    ? "btn color-btn"
+                                    : "btn"
+                                }
+                                onClick={() =>
+                                  handleAnswerOptionClick(answerOption.id)
+                                }
+                              >
+                                {answerOption.titleBn}
+                              </button>
+                            </div>
+                          )
+                        )}
+                      </div>
+                    </div>
+                  )}
+                </>
+              ) : quizLoading == true ? (
+                <span>অনুগ্রহ করে অপেক্ষা করুন ......</span>
+              ) : (
+                <span>{quizError}</span>
+              )}
+            </div>
+          </div>
+        </div>
+
+        {/* MODAL */}
+        <div
+          class={showModal ? "modal fade show d-block" : "modal fade d-none"}
+          id="exampleModalLong"
+          tabindex="-1"
+          role="dialog"
+          aria-labelledby="exampleModalLongTitle"
+          aria-hidden="true"
+          style={{ overflow: "auto" }}
+        >
+          <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">
+                  তুমি এখন আছো
+                </h5>
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                  onClick={e => handleModal(false)}
+                ></button>
+              </div>
+              <div class="modal-body">
+                <div className="current-levels">
+                  <span className="dot dot-active">ধাপ ০১</span>
+                  <span className="dot">ধাপ ০২</span>
+                  <span className="dot">ধাপ ০৩</span>
+                </div>
+                <div className="game-rules">
+                  <h3>
+                    ‘গণতন্ত্র উৎসবঃ পলিটিকস ম্যাটারস’ অনলাইন কুইজ প্রতিযোগিতার
+                    নিয়ম ও শর্তাবলিঃ
+                  </h3>
+                  <li>
+                    ১৮ বছরের ওপর যেকোনো বাংলাদেশী নাগরিকের জন্য কুইজ প্রতিযোগিতা
+                    উন্মুক্ত।
+                  </li>
+                  <li>
+                    কারণ বাংলাদেশ আমার ওয়েবসাইটে নিবন্ধন করার মাধ্যমে
+                    প্রতিযোগিতায় অংশ নিতে হবে।
+                  </li>
+                  <li>একজন প্রতিযোগী কেবল একবার অংশগ্রহণ করতে পারবেন।</li>
+                  <li>
+                    প্রত্যেক প্রতিযোগীকে সঠিক তথ্য প্রদানের মাধ্যমে প্রতিযোগিতায়
+                    অংশগ্রহণ করতে হবে।
+                  </li>
+                  <li>
+                    ফেসবুক, গুগল একাউন্ট, অথবা ই-মেইল অ্যাড্রেস দিয়ে
+                    রেজিস্ট্রেশন করা যাবে।
+                  </li>
+                  <li>একটি ফেসবুক, গুগল একাউন্ট থেকে একবারই খেলা যাবে। </li>
+                  <li>
+                    খেলায় জিততে হলে সবগুলো ধাপের কুইজে অবশ্যই অংশ নিতে হবে।
+                  </li>
+                  <li>
+                    প্রতিটি ধাপে তিনটি করে কুইজ আছে। একটি ধাপের অধীনে একটি
+                    প্রশ্ন দেয়া আছে।
+                  </li>
+                  <li>
+                    প্রতিটি প্রশ্নের জন্য নির্ধারিত সময়ের মধ্যে খেলা শেষ করতে
+                    হবে।
+                  </li>
+                  <li>
+                    সব কুইজ খেলে চূড়ান্ত পর্যায়ে প্রশ্নের সঠিক উত্তর ও ফলাফল
+                    জানা যাবে।
+                  </li>
+                  <li>
+                    পুরস্কার প্রদানের সময় ও পদ্ধতি সম্পর্কে পরবর্তীতে জানানো
+                    হবে।
+                  </li>
+
+                  <li>
+                    প্রতিযোগিতা সংক্রান্ত যেকোনো বিষয়ে আয়োজকের সিদ্ধান্তই
+                    চূড়ান্ত বলে বিবেচিত হবে।
+                  </li>
+                  <li>
+                    ডেমোক্রেসি ইন্টারন্যশনাল, ইউএসএআইডি, ইউকেএইড বা তাদের পরিবার
+                    সংশ্লিষ্ট কেউ এ কুইজ প্রতিযোগিতায় অংশগ্রহণ করতে পারবেন না।
+                  </li>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-closes"
+                  data-bs-dismiss="modal"
+                  onClick={e => handleModal(true)}
+                >
+                  কুইজ শুরু
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </Layout>
+  );
+};
+
+export default QuizOne;

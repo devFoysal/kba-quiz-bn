@@ -1,0 +1,19 @@
+body {
+  position: relative;
+  background: #fff;
+  width: 1045px;
+  margin: 0 auto;
+  -webkit-box-shadow: 0 0 3px #cacaca;
+  -moz-box-shadow: 0 0 3px #cacaca;
+  box-shadow: 0 0 3px #cacaca;
+}
+
+@media screen and (max-width: 768px) {
+  body {
+    width: auto;
+  }
+}
+.alignright a{
+  color: #ccc;
+  text-decoration: none;
+}
