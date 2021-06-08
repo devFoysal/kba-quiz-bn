@@ -16,16 +16,16 @@ import { resetData } from "../store/actions/authAction";
 import Timer2 from "../components/Timer2";
 
 var numbers = {
-  0: "0",
-  1: "1",
-  2: "2",
-  3: "3",
-  4: "4",
-  5: "5",
-  6: "6",
-  7: "7",
-  8: "8",
-  9: "9",
+  0: "০",
+  1: "১",
+  2: "২",
+  3: "৩",
+  4: "৪",
+  5: "৫",
+  6: "৬",
+  7: "৭",
+  8: "৮",
+  9: "৯",
 };
 
 function replaceNumbers(input) {
@@ -40,29 +40,20 @@ function replaceNumbers(input) {
   return output.join("");
 }
 
+// This Componenet  is Onsly For Temproary Purpose . We can Delete in future
 const QuizOne = () => {
   const { quizLevel, quizStart, answerLoading, finalResult } = useSelector(
     state => state.quiz
   );
-
-  const user = useSelector(state => state.auth.user);
   const [quiz, setQuiz] = useState([]);
   const [quizStartTime, setQuizStartTime] = useState("");
   const [quizALL, setQuizALL] = useState([]);
   const [questions, setQuestions] = useState([]);
   const [duration, setDuration] = useState(null);
   const [quizLoading, setQuizLoading] = useState(false);
-  const [quizEnd, setQuizEnd] = useState(false);
-  const [loading, setLoading] = useState(false);
   const [quizError, setQuizError] = useState(
     `দুঃখিত কুইজ প্রশ্ন প্রকাশ করা সম্ভব হচ্ছে না। আপনি কি লগ ইন করেছেন ? অথবা পেইজটি রিফ্রেশ করুন`
   );
-
-  const [updateInputs, setUpdateInputs] = useState({
-    contactNumber: "",
-  });
-
-  const [updateErrors, setUpdateErrors] = useState({});
 
   const dispatch = useDispatch();
 
@@ -114,11 +105,7 @@ const QuizOne = () => {
   const [colorbtn, setColorbtn] = useState(false);
   const [clickedId, setClickedId] = useState(null);
   const [showModal, setShowModal] = useState(false);
-  const [showMobileModal, setShowMobileModal] = useState(false);
-  const [canceltSubmitQuiz, setCanceltSubmitQuiz] = useState(false);
   const [timeLeft, setTimeLeft] = useState(duration);
-
-  const [contactNumber, setContactNumber] = useState(null);
 
   const handleModal = (start = false) => {
     setShowModal(!showModal);
@@ -126,15 +113,6 @@ const QuizOne = () => {
       dispatch(setQuizStart(true));
       dispatch(sendQuizStart(+Date.now()));
       setQuizStartTime(new Date().toLocaleTimeString());
-    }
-  };
-
-  const finalQuizSubmit = (submit = false) => {
-    if (submit == true) {
-      submitUpdateData();
-    } else {
-      setShowMobileModal(false);
-      setCanceltSubmitQuiz(true);
     }
   };
 
@@ -153,13 +131,8 @@ const QuizOne = () => {
       setCurrentQuestion(nextQuestion);
     } else {
       if (quizLevel == 3) {
-        setQuizEnd(true);
-        if (user.contactNumber.length > 0) {
-          setShowScore(true);
-          dispatch(submitAnswer(+Date.now()));
-        } else {
-          setShowMobileModal(true);
-        }
+        setShowScore(true);
+        dispatch(submitAnswer(+Date.now()));
       }
       dispatch(setQuizStart(false));
       dispatch(setQuizLevel(quizLevel + 1));
@@ -168,63 +141,11 @@ const QuizOne = () => {
     setClickedId(null);
   };
 
-  const handleUpdateInputChange = event => {
-    event.persist();
-    setUpdateInputs(inputs => ({
-      ...inputs,
-      [event.target.name]:
-        event.target.name == "avatar"
-          ? event.target.files[0]
-          : event.target.value,
-    }));
-  };
-
-  const submitUpdateData = async () => {
-    if (loading) {
-      alert("Please Wait... Dont be hurry. we are processing your data");
-      return;
-    }
-    const formData = new FormData();
-
-    Object.keys(updateInputs).forEach(function (key, index) {
-      formData.append(key, updateInputs[key]);
-      console.log(key, index);
-    });
-
-    try {
-      setLoading(true);
-      const res = await axios.post("/participant/update", formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      });
-
-      console.log(res);
-      setLoading(false);
-      if (res.data.success == true) {
-        setShowMobileModal(false);
-        setShowScore(true);
-        dispatch(submitAnswer(+Date.now()));
-      } else {
-      }
-    } catch (err) {
-      console.log(err.response);
-      setLoading(false);
-      if (err.response) setUpdateErrors(err.response.data);
-    }
-  };
-
   return (
     <Layout>
       <div className="quiz-app">
         <div className="container">
           <div className="row">
-            {canceltSubmitQuiz ? (
-              <div className="col-12 text-center">
-                দুঃখিত,আমরা কুইজটি সম্পন্ন করতে ব্যর্থ হয়েছি, দয়া করে আপডেট করুন
-                আপনার মোবাইল নাম্বার
-              </div>
-            ) : null}
             <div className="col-12 text-center">
               {showScore ? (
                 <div className="row justify-content-center">
@@ -276,14 +197,8 @@ const QuizOne = () => {
                                 dispatch(setQuizLevel(quizLevel + 1));
                                 if (quizLevel == 3) {
                                   dispatch(setQuizStart(false));
-
-                                  setQuizEnd(true);
-                                  if (user.contactNumber.length > 0) {
-                                    setShowScore(true);
-                                    dispatch(submitAnswer(+Date.now()));
-                                  } else {
-                                    setShowMobileModal(true);
-                                  }
+                                  setShowScore(true);
+                                  dispatch(submitAnswer(+Date.now()));
                                 }
                               }}
                               onPause={e => {
@@ -340,9 +255,9 @@ const QuizOne = () => {
                 </>
               ) : quizLoading == true ? (
                 <span>অনুগ্রহ করে অপেক্ষা করুন ......</span>
-              ) : !quizEnd ? (
+              ) : (
                 <span>{quizError}</span>
-              ) : null}
+              )}
             </div>
           </div>
         </div>
@@ -393,21 +308,16 @@ const QuizOne = () => {
                   <li>
                     প্রতি মাসের প্রথম দিনেই নতুন কুইজের বিষয় ও প্রশ্ন নির্ধারণ
                     করে কারণ বাংলাদেশ আমার ওয়েবসাইটে কুইজ মেনুতে আপলোড করা হবে
-                    এবং ‘কারণ বাংলাদেশ আমার’ ফেইসবুক পেইজ ও{" "}
-                    <a href="https://www.facebook.com/groups/718296318974660">
-                      ‘কারণ বাংলাদেশ আমার’ ফেইসবুক গ্রুপে{" "}
-                    </a>{" "}
-                    কুইজের বিষয় ঘোষণার মাধ্যমে প্রতিযোগিতায় অংশগ্রহণের জন্য
-                    আহ্বান জানানো হবে।
+                    এবং <a href="#">‘কারণ বাংলাদেশ আমার’</a> ফেইসবুক পেইজ ও{" "}
+                    <a href="#">‘কারণ বাংলাদেশ আমার’</a>
                   </li>
                   <li>
-                    কুইজ সংক্রান্ত সমস্ত তথ্য পেতে{" "}
-                    <a href="#">‘কারণ বাংলাদেশ আমার’ ফেইসবুক গ্রুপের </a> সদস্য
-                    হতে হবে।
+                    কুইজ সংক্রান্ত সমস্ত তথ্য পেতে ‘কারণ বাংলাদেশ আমার’ ফেইসবুক
+                    গ্রুপের সদস্য হতে হবে।
                   </li>
                   <li>
                     কারণ বাংলাদেশ আমার ওয়েবসাইটে লগ ইন অথবা নিবন্ধনের মাধ্যমে
-                    প্রতিযোগিতায় অংশ নিতে পারবেন।
+                    প্রতিযোগিতায় অংশ নিতে পারবেন ।
                   </li>
                   <li>
                     ফেসবুক, গুগল একাউন্ট দিয়ে লগ ইন করা যাবে অথবা লগ ইন ছাড়াও
@@ -425,11 +335,6 @@ const QuizOne = () => {
                     প্রতিটি ধাপে তিনটি করে কুইজ আছে। একটি ধাপের অধীনে একটি
                     প্রশ্ন দেয়া আছে।
                   </li>
-                  <li>
-                    প্রতিটি প্রশ্নের জন্য নির্ধারিত সময়ের মধ্যে খেলা শেষ করতে
-                    হবে।
-                  </li>
-                  <li>খেলার শেষে কুইজের ফলাফল প্রকাশ করা হবে না।</li>
                   <li>
                     প্রতি মাসে কুইজ খেলে অপেক্ষাকৃত কম সময়ে দ্রুত সঠিক সেরা ১০
                     উত্তরদাতা নির্বাচিত হবেন।
@@ -464,89 +369,7 @@ const QuizOne = () => {
                   data-bs-dismiss="modal"
                   onClick={e => handleModal(true)}
                 >
-                  Quiz start
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Get Mobile and Picture  */}
-
-        <div
-          class={
-            showMobileModal ? "modal fade show d-block" : "modal fade d-none"
-          }
-          id="exampleModalLong"
-          tabindex="-1"
-          role="dialog"
-          aria-labelledby="exampleModalLongTitle"
-          aria-hidden="true"
-          style={{ overflow: "auto" }}
-        >
-          <div class="modal-dialog ">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">
-                  কুইজটি জমা দেওয়ার জন্য অনুগ্রহ করে তথ্যগুলো আপডেট করুন
-                </h5>
-                <button
-                  type="button"
-                  class="btn-close"
-                  data-bs-dismiss="modal"
-                  aria-label="Close"
-                  onClick={e => finalQuizSubmit(false)}
-                ></button>
-              </div>
-              <div class="modal-body">
-                <div class="form-group row">
-                  <label for="contactNumber" class="col-sm-2 col-form-label">
-                    মোবাইল
-                  </label>
-                  <div class="col-sm-10">
-                    <input
-                      type="email"
-                      class="form-control"
-                      name="contactNumber"
-                      placeholder="আপনার মোবাইল নাম্বারটি দিন"
-                      onChange={handleUpdateInputChange}
-                    />
-
-                    <small className="d-block text-danger mb-3">
-                      {updateErrors.errors &&
-                        updateErrors.errors.contactNumber &&
-                        updateErrors.errors.contactNumber[0]}
-                    </small>
-                  </div>
-                </div>
-
-                <div class="form-group row">
-                  <label for="contactNumber" class="col-sm-2 col-form-label">
-                    আপডেট প্রোফাইল পিকচার
-                  </label>
-                  <div class="col-sm-10">
-                    <input
-                      name="avatar"
-                      type="file"
-                      class="form-control"
-                      onChange={handleUpdateInputChange}
-                    />
-                    <small className="d-block text-danger mb-3">
-                      {updateErrors.errors &&
-                        updateErrors.errors.avatar &&
-                        updateErrors.errors.avatar[0]}
-                    </small>
-                  </div>
-                </div>
-              </div>
-              <div class="modal-footer">
-                <button
-                  type="button"
-                  class="btn btn-closes"
-                  data-bs-dismiss="modal"
-                  onClick={e => finalQuizSubmit(true)}
-                >
-                  {loading ? "চলমান..." : "কুইজ জমা দিন"}
+                  কুইজ শুরু
                 </button>
               </div>
             </div>

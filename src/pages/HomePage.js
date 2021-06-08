@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import Carousel from "../components/Carousel";
 import HomeQuiz from "../components/HomeQuiz";
 import Layout from "../components/Layout";
-import banner from "../assets/images/mnemonic.png";
+import banner from "../assets/images/mn.png";
 const HomePage = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -21,15 +21,23 @@ const HomePage = () => {
               </div>
               <div className="col-lg-6">
                 <div>
-                  <img src={banner} class="d-block m-auto" width="300" alt="..." />
+                  <img
+                    src={banner}
+                    class="d-block m-auto"
+                    width="300"
+                    alt="..."
+                  />
                 </div>
                 <p>
-                  বাংলাদেশের স্বাধীনতার সুবর্ণজয়ন্তী উ্দযাপনে ডেমোক্রেসি
-                  ইন্টারন্যাশনাল আয়োজিত{" "}
-                  <strong>‘গণতন্ত্র উৎসবঃ পলিটিকস ম্যাটারস’</strong> কুইজ
-                  প্রতিযোগিতায় স্বাগতম! রাজনীতি নাগরিকের জীবন ও জীবিকাকে
-                  ব্যাপকভাবে প্রভাবিত করে। তাই চলুন, খেলতে খেলতে জেনে নেই আমাদের
-                  দেশ এবং এর রাজনীতি সম্পর্কে, আর জিতে নেই পুরষ্কার।
+                  বাংলাদেশের সুবর্ণজয়ন্তী উদযাপনে ডেমোক্রেসি ইন্টারন্যাশনাল
+                  আয়োজিত ‘গণতন্ত্র উৎসবঃ পলিটিক্স ম্যাটারস’ ক্যাম্পেইনের অনলাইন
+                  কুইজ প্রতিযোগিতায় স্বাগতম। ক্যাম্পেইনের উদ্দীপনাকে দেশজুড়ে
+                  ছড়িয়ে দিতে দেশের সাধারণ নাগরিক বিশেষত তরুণদের মধ্যে
+                  জ্ঞানভিত্তিক রাজনৈতিক অংশগ্রহণকে উৎসাহিত করতে অনুষ্ঠিত হতে
+                  যাচ্ছে <strong>‘গণতন্ত্র উৎসবঃ পলিটিক্স ম্যাটারস’</strong>{" "}
+                  অনলাইন কুইজ প্রতিযোগিতা । রাজনীতি নাগরিকের জীবন ও জীবিকাকে
+                  প্রভাবিত করে। চলুন, খেলতে খেলতে আমাদের দেশ ও রাজনীতি সম্পর্কে
+                  জেনে নেই আর জিতে নেই পুরষ্কার।
                 </p>
 
                 <div className="d-felx justify-content-between">

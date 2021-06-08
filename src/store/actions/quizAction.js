@@ -78,10 +78,10 @@ export const submitAnswer = time => {
         // history.push("/my-account/my-membership");
       })
       .catch(err => {
-        console.log(err);
+        console.log(err.response);
         dispatch({
           type: SET_FINAL_RESULT,
-          payload: err.response,
+          payload: err.response.data.error,
         });
       });
   };
