@@ -464,7 +464,7 @@ const QuizOne = () => {
                   data-bs-dismiss="modal"
                   onClick={e => handleModal(true)}
                 >
-                  Quiz start
+                  কুইজ শুরু করুন
                 </button>
               </div>
             </div>
