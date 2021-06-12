@@ -11,9 +11,11 @@ import { Provider } from "react-redux";
 import store from "./store/index";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import "./fonts/solaimanlipi/SolaimanLipi.ttf";
+
 toast.configure();
-const apiUrl = "http://127.0.0.1:8000/api/";
-// const apiUrl = "https://quizapi-bn.karonbangladeshamar.com/api";
+// const apiUrl = "http://127.0.0.1:8000/api/";
+const apiUrl = "https://quizapi-en.karonbangladeshamar.com/api";
 
 axios.defaults.baseURL = apiUrl;
 axios.defaults.headers.common["Authorization"] = `Bearer ${cookie.get(

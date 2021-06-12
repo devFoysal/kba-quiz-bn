@@ -6,13 +6,13 @@ import { setLogout } from "../store/actions/authAction";
 
 const Header = () => {
   const [sidebar, setSidebar] = useState(false);
-  const isAuthenticated = useSelector((state) => state.auth.loggedIn);
+  const isAuthenticated = useSelector(state => state.auth.loggedIn);
   console.log(sidebar);
   const dispatch = useDispatch();
-  const handleClick = (e) => {
+  const handleClick = e => {
     setSidebar(true);
   };
-  const handleClickToggle = (e) => {
+  const handleClickToggle = e => {
     setSidebar(false);
   };
 
@@ -31,26 +31,20 @@ const Header = () => {
                 <div className="lang-social-wrap">
                   <ul className="social-icons">
                     <li>
-                      <a href="#" className="icon facebook">
+                      <a
+                        href="https://www.facebook.com/karonbangladeshamar"
+                        className="icon facebook"
+                      >
                         <i className="fab fa-facebook"></i>
                       </a>
                     </li>
 
                     <li>
-                      <a href="#" className="icon youtube">
+                      <a
+                        href="https://www.youtube.com/channel/UCQ-Teu4PihByX_jU9FTVulQ"
+                        className="icon youtube"
+                      >
                         <i className="fab fa-youtube"></i>
-                      </a>
-                    </li>
-
-                    <li>
-                      <a href="#" className="icon twitter">
-                        <i className="fab fa-twitter"></i>
-                      </a>
-                    </li>
-
-                    <li>
-                      <a href="#" className="icon instagram">
-                        <i className="fab fa-instagram"></i>
                       </a>
                     </li>
                   </ul>
@@ -114,7 +108,7 @@ const Header = () => {
 
                   {isAuthenticated ? (
                     <button
-                      onClick={(e) => dispatch(setLogout())}
+                      onClick={e => dispatch(setLogout())}
                       className="btn"
                     >
                       লগ আউট
