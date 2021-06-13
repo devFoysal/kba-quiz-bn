@@ -1,4 +1,4 @@
-import f1 from "../assets/images/usaid.png";
+import f1 from "../assets/images/usbd.png";
 import f2 from "../assets/images/democracy.png";
 import f3 from "../assets/images/ukaid.png";
 
