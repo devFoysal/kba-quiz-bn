@@ -74,15 +74,15 @@ const Footer = () => {
               </div>
               <div className="d-flex">
                 <div class="alignright">
-                  <a href="https://karonbangladeshamar.com/bn/%e0%a6%86%e0%a6%ae%e0%a6%be%e0%a6%a6%e0%a7%87%e0%a6%b0-%e0%a6%95%e0%a6%a5%e0%a6%be/">
+                  <a href="https://karonbangladeshamar.com/%e0%a6%86%e0%a6%ae%e0%a6%be%e0%a6%a6%e0%a7%87%e0%a6%b0-%e0%a6%95%e0%a6%a5%e0%a6%be/">
                     আমাদের কথা
                   </a>{" "}
                   |{" "}
-                  <a href="https://karonbangladeshamar.com/bn/%E0%A6%AF%E0%A7%8B%E0%A6%97%E0%A6%BE%E0%A6%AF%E0%A7%8B%E0%A6%97/">
+                  <a href="https://karonbangladeshamar.com/%E0%A6%AF%E0%A7%8B%E0%A6%97%E0%A6%BE%E0%A6%AF%E0%A7%8B%E0%A6%97/">
                     যোগাযোগ
                   </a>{" "}
                   |{" "}
-                  <a href="https://karonbangladeshamar.com/bn/login/">লগ ইন</a>{" "}
+                  <a href="https://karonbangladeshamar.com/login/">লগ ইন</a>{" "}
                 </div>
               </div>
             </div>
