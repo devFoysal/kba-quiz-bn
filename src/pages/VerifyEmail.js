@@ -7,7 +7,7 @@ import { useSelector, useDispatch } from "react-redux";
 import Google from "../components/social/Google";
 import Facebook from "../components/social/Facebook";
 
-const Login = () => {
+const VerifyEmail = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { loading, errors, regMsg } = useSelector(state => state.auth);
@@ -76,21 +76,8 @@ const Login = () => {
                 >
                   {loading ? "অপেক্ষা করুন..." : "লগইন"}
                 </button>
-                <Link to="/verify-email">পাসওয়ার্ড ভুলে গেছেন?</Link>
+                <a href="#">পাসওয়ার্ড ভুলে গেছেন?</a>
               </div>
-              <div class="d-flex justify-content-between mt-3">
-                <Google operation="Login" />
-                <Facebook operation="Login" />
-              </div>
-
-              <Link to="/register">
-                <button
-                  style={{ width: "100%" }}
-                  className="btn btn-success btn-block mt-3"
-                >
-                  নতুন রেজিস্ট্রেশন করুন
-                </button>
-              </Link>
             </div>
           </div>
         </div>
@@ -101,4 +88,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default VerifyEmail;

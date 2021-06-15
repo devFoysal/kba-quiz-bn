@@ -7,7 +7,7 @@ import { useSelector, useDispatch } from "react-redux";
 import Google from "../components/social/Google";
 import Facebook from "../components/social/Facebook";
 
-const Login = () => {
+const PasswordChange = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { loading, errors, regMsg } = useSelector(state => state.auth);
@@ -46,24 +46,24 @@ const Login = () => {
                 <span className="alert alert-success">{regMsg}</span>
               )}
               <div class="form-group mt-4">
-                <label for="exampleInputEmail1">ইমেইল</label>
+                <label for="exampleInputEmail1">নতুন পাসওয়ার্ড</label>
                 <input
                   type="email"
                   class="form-control"
                   id="exampleInputEmail1"
                   aria-describedby="emailHelp"
-                  placeholder="ইমেইল"
+                  placeholder="*******"
                   value={email}
                   onChange={e => setEmail(e.target.value)}
                 />
               </div>
               <div class="form-group">
-                <label for="exampleInputPassword1">পাসওয়ার্ড</label>
+                <label for="exampleInputPassword1">আবার নতুন পাসওয়ার্ড</label>
                 <input
                   type="password"
                   class="form-control"
                   id="exampleInputPassword1"
-                  placeholder="পাসওয়ার্ড"
+                  placeholder="*******"
                   value={password}
                   onChange={e => setPassword(e.target.value)}
                 />
@@ -76,7 +76,7 @@ const Login = () => {
                 >
                   {loading ? "অপেক্ষা করুন..." : "লগইন"}
                 </button>
-                <Link to="/verify-email">পাসওয়ার্ড ভুলে গেছেন?</Link>
+                <a href="#">পাসওয়ার্ড ভুলে গেছেন?</a>
               </div>
               <div class="d-flex justify-content-between mt-3">
                 <Google operation="Login" />
@@ -101,4 +101,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default PasswordChange;
