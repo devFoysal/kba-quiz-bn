@@ -26,6 +26,7 @@ const Facebook = ({ operation }) => {
       textButton={`ফেসবুক লগইন`}
       callback={responseFacebook}
       cssClass="my-facebook-button-class"
+      disableMobileRedirect={true}
     />
   );
 };
