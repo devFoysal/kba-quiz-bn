@@ -18,7 +18,7 @@ const Google = ({ operation }) => {
   };
   return (
     <GoogleLogin
-      clientId="555982705247-en1tr11t2beuq8vvrg9httfgt8eb36bk.apps.googleusercontent.com"
+      clientId="151613916231-vl91be4in6jt5ttsfn14vi8u8ccq4pvv.apps.googleusercontent.com"
       disabled={false}
       scope={
         "https://www.googleapis.com/auth/user.gender.read https://www.googleapis.com/auth/user.birthday.read"
