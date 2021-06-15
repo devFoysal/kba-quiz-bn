@@ -19,7 +19,6 @@ const Header = () => {
   const handelLogout = async () => {
     await dispatch(setLogout());
     handleClickToggle();
-    window.location.replace("https://quizbn.karonbangladeshamar.com/");
   };
 
   return (

@@ -29,7 +29,7 @@ export const setLogin = (email, password) => {
         cookies.set("token", response.data.access_token);
         cookies.set("user", response.data.participant);
         dispatch({ type: SET_LOGIN, payload: response.data });
-        console.log(response);
+        return response;
         // history.push("/my-account/my-membership");
       })
       .catch(err => {
@@ -94,8 +94,7 @@ export const setLogout = () => {
     return axios
       .post("auth/logout")
       .then(response => {
-        console.log(response);
-        window.location.replace("/");
+        return response;
       })
       .catch(err => {
         dispatch({ type: ERROR_LOGOUT, err });

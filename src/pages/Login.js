@@ -13,7 +13,7 @@ const Login = () => {
   const { loading, errors, regMsg } = useSelector(state => state.auth);
   const dispatch = useDispatch();
 
-  const handleLogin = () => {
+  const handleLogin = async () => {
     if (loading) return;
     if (password.length <= 5) {
       alert("Password must be 6 characters or higher");
@@ -22,7 +22,14 @@ const Login = () => {
       alert("Please Write Email Address");
       return;
     }
-    dispatch(setLogin(email, password));
+    let loginData = await dispatch(setLogin(email, password)).then(res => {
+      return res.data;
+    }).catch(error => {
+      return false;
+    });
+    if(loginData){
+      window.location.replace("https://quizbn.karonbangladeshamar.com/");
+    }
   };
 
   useEffect(() => {
