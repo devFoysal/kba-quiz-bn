@@ -19,8 +19,8 @@ const Header = () => {
   const handelLogout = async () => {
     await dispatch(setLogout());
     handleClickToggle();
-    window.location.replace('https://quizbn.karonbangladeshamar.com/');
-  }
+    window.location.replace("https://quizbn.karonbangladeshamar.com/");
+  };
 
   return (
     <>
@@ -28,7 +28,7 @@ const Header = () => {
         <div className="container">
           <div className="row justify-content-between align-items-center">
             <div className="col-lg-3">
-              <a href="https://karonbangladeshamar.com/bn/">
+              <a href="https://karonbangladeshamar.com/">
                 <img src={logo} className="img-fluid" alt="" />
               </a>
             </div>
@@ -58,12 +58,12 @@ const Header = () => {
                   <ul className="languages">
                     <li style={{ marginRight: "15px" }}>
                       <a
-                        href="https://karonbangladeshamar.com/bn/"
+                        href="https://karonbangladeshamar.com/"
                         className="language"
                       >
                         <img
                           width="25"
-                          src="https://karonbangladeshamar.com/bn/wp-content/uploads/2021/04/Flag-United-Kingdom.jpg"
+                          src="https://karonbangladeshamar.com/wp-content/uploads/2021/04/Flag-United-Kingdom.jpg"
                           className="flag"
                         />{" "}
                         <span>English</span>
@@ -72,12 +72,12 @@ const Header = () => {
 
                     <li>
                       <a
-                        href="https://karonbangladeshamar.com/bn/"
+                        href="https://karonbangladeshamar.com/"
                         className="language active"
                       >
                         <img
                           width="25"
-                          src="https://karonbangladeshamar.com/bn/wp-content/uploads/2021/04/203-bangladesh_400px.jpg"
+                          src="https://karonbangladeshamar.com/wp-content/uploads/2021/04/203-bangladesh_400px.jpg"
                           className="flag"
                         />{" "}
                         <span>বাংলা</span>
@@ -100,14 +100,14 @@ const Header = () => {
                 <div className="buttons-div flex-1 align-items-center">
                   <a
                     className="btn"
-                    href="https://karonbangladeshamar.com/bn/%e0%a6%86%e0%a6%ae%e0%a6%be%e0%a6%a6%e0%a7%87%e0%a6%b0-%e0%a6%95%e0%a6%a5%e0%a6%be/"
+                    href="https://karonbangladeshamar.com/%e0%a6%86%e0%a6%ae%e0%a6%be%e0%a6%a6%e0%a7%87%e0%a6%b0-%e0%a6%95%e0%a6%a5%e0%a6%be/"
                   >
                     আমাদের কথা
                   </a>
 
                   <a
                     className="btn"
-                    href="https://karonbangladeshamar.com/bn/%e0%a6%af%e0%a7%8b%e0%a6%97%e0%a6%be%e0%a6%af%e0%a7%8b%e0%a6%97/"
+                    href="https://karonbangladeshamar.com/%e0%a6%af%e0%a7%8b%e0%a6%97%e0%a6%be%e0%a6%af%e0%a7%8b%e0%a6%97/"
                   >
                     যোগাযোগ
                   </a>
@@ -148,7 +148,7 @@ const Header = () => {
               <li>
                 <a
                   className="dropdown-item"
-                  href="https://karonbangladeshamar.com/bn/category/%e0%a6%87%e0%a6%a4%e0%a6%bf%e0%a6%ac%e0%a6%be%e0%a6%9a%e0%a6%95-%e0%a6%b0%e0%a6%be%e0%a6%9c%e0%a6%a8%e0%a7%80%e0%a6%a4%e0%a6%bf%e0%a6%b0-%e0%a6%97%e0%a6%b2%e0%a7%8d%e0%a6%aa/%e0%a6%a8%e0%a6%bf%e0%a6%ac%e0%a6%a8%e0%a7%8d%e0%a6%a7/"
+                  href="https://karonbangladeshamar.com/category/%e0%a6%87%e0%a6%a4%e0%a6%bf%e0%a6%ac%e0%a6%be%e0%a6%9a%e0%a6%95-%e0%a6%b0%e0%a6%be%e0%a6%9c%e0%a6%a8%e0%a7%80%e0%a6%a4%e0%a6%bf%e0%a6%b0-%e0%a6%97%e0%a6%b2%e0%a7%8d%e0%a6%aa/%e0%a6%a8%e0%a6%bf%e0%a6%ac%e0%a6%a8%e0%a7%8d%e0%a6%a7/"
                 >
                   নিবন্ধ
                 </a>
@@ -156,7 +156,7 @@ const Header = () => {
               <li>
                 <a
                   className="dropdown-item"
-                  href="https://karonbangladeshamar.com/bn/category/%e0%a6%87%e0%a6%a4%e0%a6%bf%e0%a6%ac%e0%a6%be%e0%a6%9a%e0%a6%95-%e0%a6%b0%e0%a6%be%e0%a6%9c%e0%a6%a8%e0%a7%80%e0%a6%a4%e0%a6%bf%e0%a6%b0-%e0%a6%97%e0%a6%b2%e0%a7%8d%e0%a6%aa/%e0%a6%9b%e0%a6%ac%e0%a6%bf/"
+                  href="https://karonbangladeshamar.com/category/%e0%a6%87%e0%a6%a4%e0%a6%bf%e0%a6%ac%e0%a6%be%e0%a6%9a%e0%a6%95-%e0%a6%b0%e0%a6%be%e0%a6%9c%e0%a6%a8%e0%a7%80%e0%a6%a4%e0%a6%bf%e0%a6%b0-%e0%a6%97%e0%a6%b2%e0%a7%8d%e0%a6%aa/%e0%a6%9b%e0%a6%ac%e0%a6%bf/"
                 >
                   ছবি
                 </a>
@@ -164,7 +164,7 @@ const Header = () => {
               <li>
                 <a
                   className="dropdown-item"
-                  href="https://karonbangladeshamar.com/bn/category/%e0%a6%87%e0%a6%a4%e0%a6%bf%e0%a6%ac%e0%a6%be%e0%a6%9a%e0%a6%95-%e0%a6%b0%e0%a6%be%e0%a6%9c%e0%a6%a8%e0%a7%80%e0%a6%a4%e0%a6%bf%e0%a6%b0-%e0%a6%97%e0%a6%b2%e0%a7%8d%e0%a6%aa/%e0%a6%ad%e0%a6%bf%e0%a6%a1%e0%a6%bf%e0%a6%93/"
+                  href="https://karonbangladeshamar.com/category/%e0%a6%87%e0%a6%a4%e0%a6%bf%e0%a6%ac%e0%a6%be%e0%a6%9a%e0%a6%95-%e0%a6%b0%e0%a6%be%e0%a6%9c%e0%a6%a8%e0%a7%80%e0%a6%a4%e0%a6%bf%e0%a6%b0-%e0%a6%97%e0%a6%b2%e0%a7%8d%e0%a6%aa/%e0%a6%ad%e0%a6%bf%e0%a6%a1%e0%a6%bf%e0%a6%93/"
                 >
                   ভিডিও
                 </a>
@@ -175,7 +175,7 @@ const Header = () => {
           <li className="nav-item">
             <a
               className="nav-link"
-              href="https://karonbangladeshamar.com/bn/category/%e0%a6%95%e0%a6%a5%e0%a6%be-%e0%a6%b9%e0%a7%8b%e0%a6%95/"
+              href="https://karonbangladeshamar.com/category/%e0%a6%95%e0%a6%a5%e0%a6%be-%e0%a6%b9%e0%a7%8b%e0%a6%95/"
             >
               কথা হোক
             </a>
@@ -185,7 +185,7 @@ const Header = () => {
             <a
               className="nav-link dropdown-toggle"
               data-bs-toggle="dropdown"
-              href="https://karonbangladeshamar.com/bn/category/%e0%a6%b8%e0%a6%b9%e0%a6%9c-%e0%a6%aa%e0%a6%be%e0%a6%a0/%e0%a6%a6%e0%a7%83%e0%a6%b6%e0%a7%8d%e0%a6%af-%e0%a6%97%e0%a6%b2%e0%a7%8d%e0%a6%aa-%e0%a6%b8%e0%a6%b9%e0%a6%9c-%e0%a6%aa%e0%a6%be%e0%a6%a0/"
+              href="https://karonbangladeshamar.com/category/%e0%a6%b8%e0%a6%b9%e0%a6%9c-%e0%a6%aa%e0%a6%be%e0%a6%a0/%e0%a6%a6%e0%a7%83%e0%a6%b6%e0%a7%8d%e0%a6%af-%e0%a6%97%e0%a6%b2%e0%a7%8d%e0%a6%aa-%e0%a6%b8%e0%a6%b9%e0%a6%9c-%e0%a6%aa%e0%a6%be%e0%a6%a0/"
               role="button"
               aria-expanded="false"
             >
@@ -195,7 +195,7 @@ const Header = () => {
               <li>
                 <a
                   className="dropdown-item"
-                  href="https://karonbangladeshamar.com/bn/category/%e0%a6%b8%e0%a6%b9%e0%a6%9c-%e0%a6%aa%e0%a6%be%e0%a6%a0/%e0%a6%a6%e0%a7%83%e0%a6%b6%e0%a7%8d%e0%a6%af-%e0%a6%97%e0%a6%b2%e0%a7%8d%e0%a6%aa-%e0%a6%b8%e0%a6%b9%e0%a6%9c-%e0%a6%aa%e0%a6%be%e0%a6%a0/"
+                  href="https://karonbangladeshamar.com/category/%e0%a6%b8%e0%a6%b9%e0%a6%9c-%e0%a6%aa%e0%a6%be%e0%a6%a0/%e0%a6%a6%e0%a7%83%e0%a6%b6%e0%a7%8d%e0%a6%af-%e0%a6%97%e0%a6%b2%e0%a7%8d%e0%a6%aa-%e0%a6%b8%e0%a6%b9%e0%a6%9c-%e0%a6%aa%e0%a6%be%e0%a6%a0/"
                 >
                   দৃশ্য গল্প
                 </a>
@@ -203,7 +203,7 @@ const Header = () => {
               <li>
                 <a
                   className="dropdown-item"
-                  href="https://karonbangladeshamar.com/bn/category/%e0%a6%b8%e0%a6%b9%e0%a6%9c-%e0%a6%aa%e0%a6%be%e0%a6%a0/%e0%a6%9b%e0%a6%ac%e0%a6%bf%e0%a6%b0-%e0%a6%aa%e0%a6%be%e0%a6%a0/"
+                  href="https://karonbangladeshamar.com/category/%e0%a6%b8%e0%a6%b9%e0%a6%9c-%e0%a6%aa%e0%a6%be%e0%a6%a0/%e0%a6%9b%e0%a6%ac%e0%a6%bf%e0%a6%b0-%e0%a6%aa%e0%a6%be%e0%a6%a0/"
                 >
                   ছবির পাঠ
                 </a>
@@ -239,7 +239,7 @@ const Header = () => {
               <li>
                 <a
                   className="dropdown-item"
-                  href="https://karonbangladeshamar.com/bn/%e0%a6%97%e0%a6%a3%e0%a6%a4%e0%a6%a8%e0%a7%8d%e0%a6%a4%e0%a7%8d%e0%a6%b0-%e0%a6%89%e0%a7%8e%e0%a6%b8%e0%a6%ac/"
+                  href="https://karonbangladeshamar.com/%e0%a6%97%e0%a6%a3%e0%a6%a4%e0%a6%a8%e0%a7%8d%e0%a6%a4%e0%a7%8d%e0%a6%b0-%e0%a6%89%e0%a7%8e%e0%a6%b8%e0%a6%ac/"
                 >
                   গণতন্ত্র উৎসব
                 </a>
@@ -247,7 +247,7 @@ const Header = () => {
               <li>
                 <a
                   className="dropdown-item"
-                  href="https://karonbangladeshamar.com/bn/category/%e0%a6%95%e0%a7%8d%e0%a6%af%e0%a6%be%e0%a6%ae%e0%a7%8d%e0%a6%aa%e0%a7%87%e0%a6%87%e0%a6%a8/%e0%a6%86%e0%a6%b0%e0%a7%8d%e0%a6%95%e0%a6%be%e0%a6%87%e0%a6%ad-%e0%a6%95%e0%a7%8d%e0%a6%af%e0%a6%be%e0%a6%ae%e0%a7%8d%e0%a6%aa%e0%a7%87%e0%a6%87%e0%a6%a8/"
+                  href="https://karonbangladeshamar.com/category/%e0%a6%95%e0%a7%8d%e0%a6%af%e0%a6%be%e0%a6%ae%e0%a7%8d%e0%a6%aa%e0%a7%87%e0%a6%87%e0%a6%a8/%e0%a6%86%e0%a6%b0%e0%a7%8d%e0%a6%95%e0%a6%be%e0%a6%87%e0%a6%ad-%e0%a6%95%e0%a7%8d%e0%a6%af%e0%a6%be%e0%a6%ae%e0%a7%8d%e0%a6%aa%e0%a7%87%e0%a6%87%e0%a6%a8/"
                 >
                   সম্প্রীতি উৎসব
                 </a>
@@ -278,7 +278,9 @@ const Header = () => {
                 style={{ position: "absolute", left: "0", fontSize: "25px" }}
               ></i>
             </div>
-            <img src={logo} alt="" />
+            <a href="https://karonbangladeshamar.com/">
+              <img src={logo} alt="" />
+            </a>
           </div>
         </div>
       </section>
@@ -306,7 +308,7 @@ const Header = () => {
                 <a
                   href="https://www.facebook.com/karonbangladeshamar"
                   target="_blank"
-                  style={{color:'#ccc'}}
+                  style={{ color: "#ccc" }}
                 >
                   <i
                     className="fab fa-facebook-f"
@@ -316,7 +318,7 @@ const Header = () => {
                 <a
                   href="https://www.youtube.com/channel/UCQ-Teu4PihByX_jU9FTVulQ"
                   target="_blank"
-                  style={{color:'#ccc'}}
+                  style={{ color: "#ccc" }}
                 >
                   <i className="fab fa-youtube"></i>
                 </a>
@@ -336,7 +338,7 @@ const Header = () => {
                 <li>
                   <a
                     className="dropdown-item"
-                    href="https://karonbangladeshamar.com/bn/category/%e0%a6%87%e0%a6%a4%e0%a6%bf%e0%a6%ac%e0%a6%be%e0%a6%9a%e0%a6%95-%e0%a6%b0%e0%a6%be%e0%a6%9c%e0%a6%a8%e0%a7%80%e0%a6%a4%e0%a6%bf%e0%a6%b0-%e0%a6%97%e0%a6%b2%e0%a7%8d%e0%a6%aa/%e0%a6%a8%e0%a6%bf%e0%a6%ac%e0%a6%a8%e0%a7%8d%e0%a6%a7/"
+                    href="https://karonbangladeshamar.com/category/%e0%a6%87%e0%a6%a4%e0%a6%bf%e0%a6%ac%e0%a6%be%e0%a6%9a%e0%a6%95-%e0%a6%b0%e0%a6%be%e0%a6%9c%e0%a6%a8%e0%a7%80%e0%a6%a4%e0%a6%bf%e0%a6%b0-%e0%a6%97%e0%a6%b2%e0%a7%8d%e0%a6%aa/%e0%a6%a8%e0%a6%bf%e0%a6%ac%e0%a6%a8%e0%a7%8d%e0%a6%a7/"
                   >
                     নিবন্ধ
                   </a>
@@ -344,7 +346,7 @@ const Header = () => {
                 <li>
                   <a
                     className="dropdown-item"
-                    href="https://karonbangladeshamar.com/bn/category/%e0%a6%87%e0%a6%a4%e0%a6%bf%e0%a6%ac%e0%a6%be%e0%a6%9a%e0%a6%95-%e0%a6%b0%e0%a6%be%e0%a6%9c%e0%a6%a8%e0%a7%80%e0%a6%a4%e0%a6%bf%e0%a6%b0-%e0%a6%97%e0%a6%b2%e0%a7%8d%e0%a6%aa/%e0%a6%9b%e0%a6%ac%e0%a6%bf/"
+                    href="https://karonbangladeshamar.com/category/%e0%a6%87%e0%a6%a4%e0%a6%bf%e0%a6%ac%e0%a6%be%e0%a6%9a%e0%a6%95-%e0%a6%b0%e0%a6%be%e0%a6%9c%e0%a6%a8%e0%a7%80%e0%a6%a4%e0%a6%bf%e0%a6%b0-%e0%a6%97%e0%a6%b2%e0%a7%8d%e0%a6%aa/%e0%a6%9b%e0%a6%ac%e0%a6%bf/"
                   >
                     ছবি
                   </a>
@@ -352,7 +354,7 @@ const Header = () => {
                 <li>
                   <a
                     className="dropdown-item"
-                    href="https://karonbangladeshamar.com/bn/category/%e0%a6%87%e0%a6%a4%e0%a6%bf%e0%a6%ac%e0%a6%be%e0%a6%9a%e0%a6%95-%e0%a6%b0%e0%a6%be%e0%a6%9c%e0%a6%a8%e0%a7%80%e0%a6%a4%e0%a6%bf%e0%a6%b0-%e0%a6%97%e0%a6%b2%e0%a7%8d%e0%a6%aa/%e0%a6%ad%e0%a6%bf%e0%a6%a1%e0%a6%bf%e0%a6%93/"
+                    href="https://karonbangladeshamar.com/category/%e0%a6%87%e0%a6%a4%e0%a6%bf%e0%a6%ac%e0%a6%be%e0%a6%9a%e0%a6%95-%e0%a6%b0%e0%a6%be%e0%a6%9c%e0%a6%a8%e0%a7%80%e0%a6%a4%e0%a6%bf%e0%a6%b0-%e0%a6%97%e0%a6%b2%e0%a7%8d%e0%a6%aa/%e0%a6%ad%e0%a6%bf%e0%a6%a1%e0%a6%bf%e0%a6%93/"
                   >
                     ভিডিও
                   </a>
@@ -362,7 +364,7 @@ const Header = () => {
             <li className="nav-item">
               <a
                 className=""
-                href="https://karonbangladeshamar.com/bn/category/%e0%a6%95%e0%a6%a5%e0%a6%be-%e0%a6%b9%e0%a7%8b%e0%a6%95/"
+                href="https://karonbangladeshamar.com/category/%e0%a6%95%e0%a6%a5%e0%a6%be-%e0%a6%b9%e0%a7%8b%e0%a6%95/"
               >
                 কথা হোক
               </a>
@@ -372,7 +374,7 @@ const Header = () => {
               <a
                 className=" dropdown-toggle"
                 data-bs-toggle="dropdown"
-                href="https://karonbangladeshamar.com/bn/category/%e0%a6%b8%e0%a6%b9%e0%a6%9c-%e0%a6%aa%e0%a6%be%e0%a6%a0/%e0%a6%a6%e0%a7%83%e0%a6%b6%e0%a7%8d%e0%a6%af-%e0%a6%97%e0%a6%b2%e0%a7%8d%e0%a6%aa-%e0%a6%b8%e0%a6%b9%e0%a6%9c-%e0%a6%aa%e0%a6%be%e0%a6%a0/"
+                href="https://karonbangladeshamar.com/category/%e0%a6%b8%e0%a6%b9%e0%a6%9c-%e0%a6%aa%e0%a6%be%e0%a6%a0/%e0%a6%a6%e0%a7%83%e0%a6%b6%e0%a7%8d%e0%a6%af-%e0%a6%97%e0%a6%b2%e0%a7%8d%e0%a6%aa-%e0%a6%b8%e0%a6%b9%e0%a6%9c-%e0%a6%aa%e0%a6%be%e0%a6%a0/"
                 role="button"
                 aria-expanded="false"
               >
@@ -382,7 +384,7 @@ const Header = () => {
                 <li>
                   <a
                     className="dropdown-item"
-                    href="https://karonbangladeshamar.com/bn/category/%e0%a6%b8%e0%a6%b9%e0%a6%9c-%e0%a6%aa%e0%a6%be%e0%a6%a0/%e0%a6%a6%e0%a7%83%e0%a6%b6%e0%a7%8d%e0%a6%af-%e0%a6%97%e0%a6%b2%e0%a7%8d%e0%a6%aa-%e0%a6%b8%e0%a6%b9%e0%a6%9c-%e0%a6%aa%e0%a6%be%e0%a6%a0/"
+                    href="https://karonbangladeshamar.com/category/%e0%a6%b8%e0%a6%b9%e0%a6%9c-%e0%a6%aa%e0%a6%be%e0%a6%a0/%e0%a6%a6%e0%a7%83%e0%a6%b6%e0%a7%8d%e0%a6%af-%e0%a6%97%e0%a6%b2%e0%a7%8d%e0%a6%aa-%e0%a6%b8%e0%a6%b9%e0%a6%9c-%e0%a6%aa%e0%a6%be%e0%a6%a0/"
                   >
                     দৃশ্য গল্প
                   </a>
@@ -390,7 +392,7 @@ const Header = () => {
                 <li>
                   <a
                     className="dropdown-item"
-                    href="https://karonbangladeshamar.com/bn/category/%e0%a6%b8%e0%a6%b9%e0%a6%9c-%e0%a6%aa%e0%a6%be%e0%a6%a0/%e0%a6%9b%e0%a6%ac%e0%a6%bf%e0%a6%b0-%e0%a6%aa%e0%a6%be%e0%a6%a0/"
+                    href="https://karonbangladeshamar.com/category/%e0%a6%b8%e0%a6%b9%e0%a6%9c-%e0%a6%aa%e0%a6%be%e0%a6%a0/%e0%a6%9b%e0%a6%ac%e0%a6%bf%e0%a6%b0-%e0%a6%aa%e0%a6%be%e0%a6%a0/"
                   >
                     ছবির পাঠ
                   </a>
@@ -426,7 +428,7 @@ const Header = () => {
                 <li>
                   <a
                     className="dropdown-item"
-                    href="https://karonbangladeshamar.com/bn/%e0%a6%97%e0%a6%a3%e0%a6%a4%e0%a6%a8%e0%a7%8d%e0%a6%a4%e0%a7%8d%e0%a6%b0-%e0%a6%89%e0%a7%8e%e0%a6%b8%e0%a6%ac/"
+                    href="https://karonbangladeshamar.com/%e0%a6%97%e0%a6%a3%e0%a6%a4%e0%a6%a8%e0%a7%8d%e0%a6%a4%e0%a7%8d%e0%a6%b0-%e0%a6%89%e0%a7%8e%e0%a6%b8%e0%a6%ac/"
                   >
                     গণতন্ত্র উৎসব
                   </a>
@@ -434,7 +436,7 @@ const Header = () => {
                 <li>
                   <a
                     className="dropdown-item"
-                    href="https://karonbangladeshamar.com/bn/category/%e0%a6%95%e0%a7%8d%e0%a6%af%e0%a6%be%e0%a6%ae%e0%a7%8d%e0%a6%aa%e0%a7%87%e0%a6%87%e0%a6%a8/%e0%a6%86%e0%a6%b0%e0%a7%8d%e0%a6%95%e0%a6%be%e0%a6%87%e0%a6%ad-%e0%a6%95%e0%a7%8d%e0%a6%af%e0%a6%be%e0%a6%ae%e0%a7%8d%e0%a6%aa%e0%a7%87%e0%a6%87%e0%a6%a8/"
+                    href="https://karonbangladeshamar.com/category/%e0%a6%95%e0%a7%8d%e0%a6%af%e0%a6%be%e0%a6%ae%e0%a7%8d%e0%a6%aa%e0%a7%87%e0%a6%87%e0%a6%a8/%e0%a6%86%e0%a6%b0%e0%a7%8d%e0%a6%95%e0%a6%be%e0%a6%87%e0%a6%ad-%e0%a6%95%e0%a7%8d%e0%a6%af%e0%a6%be%e0%a6%ae%e0%a7%8d%e0%a6%aa%e0%a7%87%e0%a6%87%e0%a6%a8/"
                   >
                     সম্প্রীতি উৎসব
                   </a>
@@ -452,7 +454,7 @@ const Header = () => {
             <li className="nav-item">
               <a
                 className=""
-                href="https://karonbangladeshamar.com/bn/%e0%a6%86%e0%a6%ae%e0%a6%be%e0%a6%a6%e0%a7%87%e0%a6%b0-%e0%a6%95%e0%a6%a5%e0%a6%be/"
+                href="https://karonbangladeshamar.com/%e0%a6%86%e0%a6%ae%e0%a6%be%e0%a6%a6%e0%a7%87%e0%a6%b0-%e0%a6%95%e0%a6%a5%e0%a6%be/"
               >
                 আমাদের কথা
               </a>
@@ -461,7 +463,7 @@ const Header = () => {
             <li className="nav-item">
               <a
                 className=""
-                href="https://karonbangladeshamar.com/bn/%e0%a6%af%e0%a7%8b%e0%a6%97%e0%a6%be%e0%a6%af%e0%a7%8b%e0%a6%97/"
+                href="https://karonbangladeshamar.com/%e0%a6%af%e0%a7%8b%e0%a6%97%e0%a6%be%e0%a6%af%e0%a7%8b%e0%a6%97/"
               >
                 যোগাযোগ
               </a>
