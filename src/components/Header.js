@@ -6,15 +6,21 @@ import { setLogout } from "../store/actions/authAction";
 
 const Header = () => {
   const [sidebar, setSidebar] = useState(false);
-  const isAuthenticated = useSelector(state => state.auth.loggedIn);
+  const isAuthenticated = useSelector((state) => state.auth.loggedIn);
   console.log(sidebar);
   const dispatch = useDispatch();
-  const handleClick = e => {
+  const handleClick = (e) => {
     setSidebar(true);
   };
-  const handleClickToggle = e => {
+  const handleClickToggle = (e) => {
     setSidebar(false);
   };
+
+  const handelLogout = async () => {
+    await dispatch(setLogout());
+    handleClickToggle();
+    window.location.replace('https://quizbn.karonbangladeshamar.com/');
+  }
 
   return (
     <>
@@ -108,7 +114,7 @@ const Header = () => {
 
                   {isAuthenticated ? (
                     <button
-                      onClick={e => dispatch(setLogout())}
+                      onClick={(e) => dispatch(setLogout())}
                       className="btn"
                     >
                       লগ আউট
@@ -297,11 +303,23 @@ const Header = () => {
             </div>
             <div className="col-12 text-center my-3">
               <div className="icon-div">
-                <i
-                  className="fab fa-facebook-f"
-                  style={{ marginRight: "10px" }}
-                ></i>
-                <i className="fab fa-youtube"></i>
+                <a
+                  href="https://www.facebook.com/karonbangladeshamar"
+                  target="_blank"
+                  style={{color:'#ccc'}}
+                >
+                  <i
+                    className="fab fa-facebook-f"
+                    style={{ marginRight: "10px" }}
+                  ></i>
+                </a>
+                <a
+                  href="https://www.youtube.com/channel/UCQ-Teu4PihByX_jU9FTVulQ"
+                  target="_blank"
+                  style={{color:'#ccc'}}
+                >
+                  <i className="fab fa-youtube"></i>
+                </a>
               </div>
             </div>
             <li className="nav-item dropdown">
@@ -430,6 +448,39 @@ const Header = () => {
                   </a>
                 </li>
               </ul>
+            </li>
+            <li className="nav-item">
+              <a
+                className=""
+                href="https://karonbangladeshamar.com/bn/%e0%a6%86%e0%a6%ae%e0%a6%be%e0%a6%a6%e0%a7%87%e0%a6%b0-%e0%a6%95%e0%a6%a5%e0%a6%be/"
+              >
+                আমাদের কথা
+              </a>
+            </li>
+
+            <li className="nav-item">
+              <a
+                className=""
+                href="https://karonbangladeshamar.com/bn/%e0%a6%af%e0%a7%8b%e0%a6%97%e0%a6%be%e0%a6%af%e0%a7%8b%e0%a6%97/"
+              >
+                যোগাযোগ
+              </a>
+            </li>
+
+            <li className="nav-item">
+              {isAuthenticated ? (
+                <button
+                  onClick={(e) => handelLogout()}
+                  className="btn p-0"
+                  style={{ color: "#ccc" }}
+                >
+                  লগ আউট
+                </button>
+              ) : (
+                <NavLink to="/login" className="">
+                  লগ ইন
+                </NavLink>
+              )}
             </li>
           </div>
         </div>
