@@ -20,7 +20,7 @@ const Facebook = ({ operation }) => {
   };
   return (
     <FacebookLogin
-      appId="431205104828774"
+      appId="359452518875828"
       fields="name,email,picture"
       icon="fa-facebook"
       textButton={`ফেসবুক লগইন`}
