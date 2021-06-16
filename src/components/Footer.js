@@ -81,8 +81,7 @@ const Footer = () => {
                   <a href="https://karonbangladeshamar.com/%E0%A6%AF%E0%A7%8B%E0%A6%97%E0%A6%BE%E0%A6%AF%E0%A7%8B%E0%A6%97/">
                     যোগাযোগ
                   </a>{" "}
-                  |{" "}
-                  <a href="https://karonbangladeshamar.com/login/">লগ ইন</a>{" "}
+                  | <a href="/login">লগ ইন</a>{" "}
                 </div>
               </div>
             </div>
