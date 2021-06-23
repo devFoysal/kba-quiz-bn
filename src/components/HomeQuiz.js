@@ -4,6 +4,8 @@ import card3 from "../assets/images/button03.png";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 
+import GameRules from "./GameRules/index";
+
 const HomeQuiz = () => {
   const { quizLevel } = useSelector(state => state.quiz);
   return (
@@ -18,6 +20,7 @@ const HomeQuiz = () => {
           </div>
         </div>
 
+        <GameRules/>
         {/* <div className="row justify-content-center">
           <div className="col-md-3">
             <div className={`${quizLevel == 1 ? "card" : "card disabled"}`}>
