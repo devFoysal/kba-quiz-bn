@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from "react";
 import Layout from "../components/LayoutNotCarousel";
 import axios from "axios";
+import parse from "html-react-parser";
+import { connect, useDispatch } from "react-redux";
+
+import { getLeaderboard } from "../store/actions/leaderboardAction";
 
 var numbers = {
   0: "০",
@@ -26,25 +30,83 @@ function replaceNumbers(input) {
   }
   return output.join("");
 }
-const Leaderboard = () => {
+const Leaderboard = (props) => {
+  const dispatch = useDispatch();
   const [leaderboards, setLeaderboards] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    axios
-      .get("leaderboard")
-      .then(response => {
-        console.log(response);
+    if (props.leaderboard) {
+     
+      setLeaderboards(props.leaderboard);
+      setLoading(props.loading);
+    }
+    // axios
+    //   .get("leaderboard")
+    //   .then((response) => {
+    //     if (response.data) {
+    //       setLeaderboards(response.data.result);
+    //       setLoading(false);
+    //     }
+    //   })
+    //   .catch((err) => {
+    //     console.log(err);
+    //   });
+  }, [props]);
 
-        if (response.data) {
-          setLeaderboards(response.data.result);
-          setLoading(false);
-        }
-      })
-      .catch(err => {
-        console.log(err);
-      });
+  useEffect(() => {
+    getData();
   }, []);
+
+  const getData = async () => {
+    await dispatch(props.getLeaderboard);
+  };
+
+  let monthName = [
+    "জানুয়ারী",
+    "ফেব্রুয়ারী",
+    "মার্চ",
+    "এপ্রিল",
+    "মে",
+    "জুন",
+    "জুলাই",
+    "আগষ্ট",
+    "সেপ্টেম্বর",
+    "অক্টোবর",
+    "নভেম্বর",
+    "ডিসেম্বর",
+    "জানুয়ারী",
+    "ফেব্রুয়ারী",
+    "মার্চ",
+    "এপ্রিল",
+    "মে",
+    "জুন",
+    "জুলাই",
+    "আগষ্ট",
+    "সেপ্টেম্বর",
+    "অক্টোবর",
+    "নভেম্বর",
+    "ডিসেম্বর",
+  ];
+
+  const renderLeaderBoardData = () => {
+    let output = ``;
+    Object.keys(props.leaderboard).forEach((key) => {
+      output += `<tr><td colspan="4"><strong>${
+        monthName[parseInt(key) - 1]
+      }</strong></td>`;
+      props.leaderboard[key].map((item, i) => {
+        output += `<tr><th scope="row">${replaceNumbers(
+          (i + 1).toString()
+        )}</th><td>${item.participant}</td><td>${replaceNumbers(
+          item.correctAnswer.toString()
+        )}</td><td>${replaceNumbers((item.time / 1000).toString())} সেকেন্ড</td></tr>`;
+      });
+      output += `</tr>`;
+    });
+
+    return output;
+  };
 
   return (
     <Layout>
@@ -54,7 +116,7 @@ const Leaderboard = () => {
             <div className="col-12 text-center">
               <h2>লিডারবোর্ড</h2>
               {!loading ? (
-                <table class="table table-hover">
+                <table className="table table-hover">
                   <thead>
                     <tr>
                       <th scope="col">#</th>
@@ -63,23 +125,7 @@ const Leaderboard = () => {
                       <th scope="col">সময় লেগেছে</th>
                     </tr>
                   </thead>
-                  <tbody>
-                    {leaderboards.map((board, i) => (
-                      <tr>
-                        <th scope="row">
-                          {replaceNumbers((i + 1).toString())}
-                        </th>
-                        <td>{board.participant}</td>
-                        <td>
-                          {replaceNumbers(board.correctAnswer.toString())}
-                        </td>
-                        <td>
-                          {replaceNumbers((board.time / 1000).toString())}{" "}
-                          সেকেন্ড
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
+                  <tbody>{parse(renderLeaderBoardData())}</tbody>
                 </table>
               ) : (
                 <h3>অনুগ্রহ করে অপেক্ষা করুন......</h3>
@@ -92,4 +138,11 @@ const Leaderboard = () => {
   );
 };
 
-export default Leaderboard;
+const mapStateToProps = (state) => {
+  return {
+    loading: state.leaderboard.loading,
+    leaderboard: state.leaderboard.data,
+  };
+};
+
+export default connect(mapStateToProps, { getLeaderboard })(Leaderboard);

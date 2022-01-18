@@ -69,13 +69,13 @@ const Register = () => {
               {regErrors.message}
             </div>
           )}
-          <div class="row justify-content-center">
+          <div className="row justify-content-center">
             <div className="col-lg-4">
-              <div class="form-group">
-                <label for="exampleInputEmail1">নাম</label>
+              <div className="form-group">
+                <label htmlFor="exampleInputEmail1">নাম</label>
                 <input
                   type="text"
-                  class="form-control"
+                  className="form-control"
                   id="exampleInputEmail1"
                   aria-describedby="emailHelp"
                   placeholder="নাম"
@@ -88,11 +88,11 @@ const Register = () => {
                     regErrors.errors.fullName[0]}
                 </small>
               </div>
-              <div class="form-group">
-                <label for="exampleInputEmail1">আপলোড ছবি</label>
+              <div className="form-group">
+                <label htmlFor="exampleInputEmail1">আপলোড ছবি</label>
                 <input
                   type="file"
-                  class="form-control"
+                  className="form-control"
                   id="exampleInputEmail1"
                   aria-describedby="emailHelp"
                   onChange={handleRegInputChange}
@@ -104,11 +104,11 @@ const Register = () => {
                     regErrors.errors.avatar[0]}
                 </small>
               </div>
-              <div class="form-group">
-                <label for="exampleInputEmail1">ইমেইল</label>
+              <div className="form-group">
+                <label htmlFor="exampleInputEmail1">ইমেইল</label>
                 <input
                   type="email"
-                  class="form-control"
+                  className="form-control"
                   id="exampleInputEmail1"
                   aria-describedby="emailHelp"
                   placeholder="ইমেইল"
@@ -121,11 +121,11 @@ const Register = () => {
                     regErrors.errors.email[0]}
                 </small>
               </div>
-              <div class="form-group">
-                <label for="exampleInputPassword1">পাসওয়ার্ড</label>
+              <div className="form-group">
+                <label htmlFor="exampleInputPassword1">পাসওয়ার্ড</label>
                 <input
                   type="password"
-                  class="form-control"
+                  className="form-control"
                   id="exampleInputPassword1"
                   placeholder="পাসওয়ার্ড"
                   name="password"
@@ -138,11 +138,11 @@ const Register = () => {
                 </small>
               </div>
 
-              <div class="form-group">
-                <label for="exampleInputPassword1">মোবাইল</label>
+              <div className="form-group">
+                <label htmlFor="exampleInputPassword1">মোবাইল</label>
                 <input
                   type="text"
-                  class="form-control"
+                  className="form-control"
                   id="exampleInputPassword1"
                   placeholder="মোবাইল"
                   name="contactNumber"
@@ -155,11 +155,11 @@ const Register = () => {
                 </small>
               </div>
 
-              <div class="form-group">
-                <label for="exampleInputPassword1">বয়স</label>
+              <div className="form-group">
+                <label htmlFor="exampleInputPassword1">বয়স</label>
                 <input
                   type="number"
-                  class="form-control"
+                  className="form-control"
                   id="exampleInputPassword1"
                   placeholder="বয়স"
                   name="age"
@@ -171,8 +171,8 @@ const Register = () => {
                     regErrors.errors.age[0]}
                 </small>
               </div>
-              <div class="form-group">
-                <label for="exampleInputPassword1">ঠিকানা</label>
+              <div className="form-group">
+                <label htmlFor="exampleInputPassword1">ঠিকানা</label>
                 <textarea
                   className="form-control"
                   placeholder="ঠিকানা"
@@ -186,8 +186,8 @@ const Register = () => {
                 </small>
               </div>
 
-              <div class="form-group">
-                <label for="exampleInputPassword1">লিঙ্গ</label>
+              <div className="form-group">
+                <label htmlFor="exampleInputPassword1">লিঙ্গ</label>
                 <select
                   className="form-control"
                   name="gender"
@@ -206,11 +206,11 @@ const Register = () => {
                     regErrors.errors.gender[0]}
                 </small>
               </div>
-              <div class="d-flex justify-content-between">
+              <div className="d-flex justify-content-between">
                 <button
                   onClick={e => submitRegData()}
                   type="submit"
-                  class="btn btn-primary mt-2"
+                  className="btn btn-primary mt-2"
                 >
                   {loading ? "অপেক্ষা করুন..." : "রেজিস্টার"}
                 </button>

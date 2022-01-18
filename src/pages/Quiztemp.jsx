@@ -272,21 +272,21 @@ const QuizOne = () => {
           aria-hidden="true"
           style={{ overflow: "auto" }}
         >
-          <div class="modal-dialog modal-lg modal-dialog-centered">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">
+          <div className="modal-dialog modal-lg modal-dialog-centered">
+            <div className="modal-content">
+              <div className="modal-header">
+                <h5 className="modal-title" id="exampleModalLabel">
                   তুমি এখন আছো
                 </h5>
                 <button
                   type="button"
-                  class="btn-close"
+                  className="btn-close"
                   data-bs-dismiss="modal"
                   aria-label="Close"
                   onClick={e => handleModal(false)}
                 ></button>
               </div>
-              <div class="modal-body">
+              <div className="modal-body">
                 <div className="current-levels">
                   <span className="dot dot-active">ধাপ ০১</span>
                   <span className="dot">ধাপ ০২</span>
@@ -362,10 +362,10 @@ const QuizOne = () => {
                   </li>
                 </div>
               </div>
-              <div class="modal-footer">
+              <div className="modal-footer">
                 <button
                   type="button"
-                  class="btn btn-closes"
+                  className="btn btn-closes"
                   data-bs-dismiss="modal"
                   onClick={e => handleModal(true)}
                 >

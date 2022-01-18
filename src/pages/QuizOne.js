@@ -68,6 +68,7 @@ const QuizOne = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    // console.log(quizStartTime , 'quizStartTime')
     setQuizLoading(true);
     axios.defaults.headers.common["Authorization"] = `Bearer ${cookie.get(
       "token"
@@ -125,7 +126,7 @@ const QuizOne = () => {
     setShowModal(!showModal);
     if (start == true) {
       dispatch(setQuizStart(true));
-      dispatch(sendQuizStart(+Date.now()));
+      dispatch(sendQuizStart(Date.now()));
       setQuizStartTime(new Date().toLocaleTimeString());
     }
   };
@@ -157,7 +158,7 @@ const QuizOne = () => {
         setQuizEnd(true);
         if (user.contactNumber.length > 0) {
           setShowScore(true);
-          dispatch(submitAnswer(+Date.now()));
+          dispatch(submitAnswer(Date.now()));
         } else {
           setShowMobileModal(true);
         }
@@ -205,7 +206,7 @@ const QuizOne = () => {
       if (res.data.success == true) {
         setShowMobileModal(false);
         setShowScore(true);
-        dispatch(submitAnswer(+Date.now()));
+        dispatch(submitAnswer(Date.now()));
       } else {
       }
     } catch (err) {
@@ -282,7 +283,7 @@ const QuizOne = () => {
                                   setQuizEnd(true);
                                   if (user.contactNumber.length > 0) {
                                     setShowScore(true);
-                                    dispatch(submitAnswer(+Date.now()));
+                                    dispatch(submitAnswer(Date.now()));
                                   } else {
                                     setShowMobileModal(true);
                                   }
@@ -362,21 +363,21 @@ const QuizOne = () => {
           aria-hidden="true"
           style={{ overflow: "auto" }}
         >
-          <div class="modal-dialog modal-lg modal-dialog-centered">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">
+          <div className="modal-dialog modal-lg modal-dialog-centered">
+            <div className="modal-content">
+              <div className="modal-header">
+                <h5 className="modal-title" id="exampleModalLabel">
                   তুমি এখন আছো
                 </h5>
                 <button
                   type="button"
-                  class="btn-close"
+                  className="btn-close"
                   data-bs-dismiss="modal"
                   aria-label="Close"
                   onClick={e => handleModal(false)}
                 ></button>
               </div>
-              <div class="modal-body">
+              <div className="modal-body">
                 <div className="current-levels">
                   <span className="dot dot-active">ধাপ ০১</span>
                   <span className="dot">ধাপ ০২</span>
@@ -384,10 +385,10 @@ const QuizOne = () => {
                 </div>
                 <GameRules />
               </div>
-              <div class="modal-footer">
+              <div className="modal-footer">
                 <button
                   type="button"
-                  class="btn btn-closes"
+                  className="btn btn-closes"
                   data-bs-dismiss="modal"
                   onClick={e => handleModal(true)}
                 >
@@ -411,29 +412,29 @@ const QuizOne = () => {
           aria-hidden="true"
           style={{ overflow: "auto" }}
         >
-          <div class="modal-dialog ">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">
+          <div className="modal-dialog ">
+            <div className="modal-content">
+              <div className="modal-header">
+                <h5 className="modal-title" id="exampleModalLabel">
                   কুইজটি জমা দেওয়ার জন্য অনুগ্রহ করে তথ্যগুলো আপডেট করুন
                 </h5>
                 <button
                   type="button"
-                  class="btn-close"
+                  className="btn-close"
                   data-bs-dismiss="modal"
                   aria-label="Close"
                   onClick={e => finalQuizSubmit(false)}
                 ></button>
               </div>
-              <div class="modal-body">
-                <div class="form-group row">
-                  <label for="contactNumber" class="col-sm-2 col-form-label">
+              <div className="modal-body">
+                <div className="form-group row">
+                  <label for="contactNumber" className="col-sm-2 col-form-label">
                     মোবাইল
                   </label>
-                  <div class="col-sm-10">
+                  <div className="col-sm-10">
                     <input
                       type="email"
-                      class="form-control"
+                      className="form-control"
                       name="contactNumber"
                       placeholder="আপনার মোবাইল নাম্বারটি দিন"
                       onChange={handleUpdateInputChange}
@@ -447,15 +448,15 @@ const QuizOne = () => {
                   </div>
                 </div>
 
-                <div class="form-group row">
-                  <label for="contactNumber" class="col-sm-2 col-form-label">
+                <div className="form-group row">
+                  <label for="contactNumber" className="col-sm-2 col-form-label">
                     আপডেট প্রোফাইল পিকচার
                   </label>
-                  <div class="col-sm-10">
+                  <div className="col-sm-10">
                     <input
                       name="avatar"
                       type="file"
-                      class="form-control"
+                      className="form-control"
                       onChange={handleUpdateInputChange}
                     />
                     <small className="d-block text-danger mb-3">
@@ -466,10 +467,10 @@ const QuizOne = () => {
                   </div>
                 </div>
               </div>
-              <div class="modal-footer">
+              <div className="modal-footer">
                 <button
                   type="button"
-                  class="btn btn-closes"
+                  className="btn btn-closes"
                   data-bs-dismiss="modal"
                   onClick={e => finalQuizSubmit(true)}
                 >

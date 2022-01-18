@@ -17,7 +17,7 @@ function App() {
       <ProtectedRoute path="/quiz" exact component={QuizOne} />
       <Route path="/leaderboard" exact component={Leaderboard} />
       <Route path="/verify-email" exact component={VerifyEmail} />
-      <Route path="/leaderboard" exact component={Leaderboard} />
+      {/* <Route path="/leaderboard" exact component={Leaderboard} /> */}
       <ProtectedRegLogRoute path="/login" exact component={Login} />
       <ProtectedRegLogRoute path="/register" exact component={Register} />
     </>

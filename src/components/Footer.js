@@ -73,7 +73,7 @@ const Footer = () => {
                 </a>
               </div>
               <div className="d-flex">
-                <div class="alignright">
+                <div className="alignright">
                   <a href="https://karonbangladeshamar.com/%e0%a6%86%e0%a6%ae%e0%a6%be%e0%a6%a6%e0%a7%87%e0%a6%b0-%e0%a6%95%e0%a6%a5%e0%a6%be/">
                     আমাদের কথা
                   </a>{" "}
@@ -82,7 +82,7 @@ const Footer = () => {
                     যোগাযোগ
                   </a>{" "}
                   |{" "}
-                  <a href="https://karonbangladeshamar.com/login/">লগ ইন</a>{" "}
+                  <a href="https://quizbn.karonbangladeshamar.com/login">লগ ইন</a>{" "}
                 </div>
               </div>
             </div>

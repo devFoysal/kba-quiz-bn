@@ -43,7 +43,7 @@ const Login = () => {
       <Header />
       <div className="login-app">
         <div className="container">
-          <div class="row justify-content-center">
+          <div className="row justify-content-center">
             <div className="col-lg-6">
               {errors.message && (
                 <span className="alert alert-danger">{errors.message}</span>
@@ -52,11 +52,11 @@ const Login = () => {
               {regMsg && regMsg.length > 0 && (
                 <span className="alert alert-success">{regMsg}</span>
               )}
-              <div class="form-group mt-4">
-                <label for="exampleInputEmail1">ইমেইল</label>
+              <div className="form-group mt-4">
+                <label htmlFor="exampleInputEmail1">ইমেইল</label>
                 <input
                   type="email"
-                  class="form-control"
+                  className="form-control"
                   id="exampleInputEmail1"
                   aria-describedby="emailHelp"
                   placeholder="ইমেইল"
@@ -64,28 +64,28 @@ const Login = () => {
                   onChange={e => setEmail(e.target.value)}
                 />
               </div>
-              <div class="form-group">
-                <label for="exampleInputPassword1">পাসওয়ার্ড</label>
+              <div className="form-group">
+                <label htmlFor="exampleInputPassword1">পাসওয়ার্ড</label>
                 <input
                   type="password"
-                  class="form-control"
+                  className="form-control"
                   id="exampleInputPassword1"
                   placeholder="পাসওয়ার্ড"
                   value={password}
                   onChange={e => setPassword(e.target.value)}
                 />
               </div>
-              <div class="d-flex justify-content-between ">
+              <div className="d-flex justify-content-between ">
                 <button
                   onClick={e => handleLogin()}
                   type="submit"
-                  class="btn btn-primary mt-2"
+                  className="btn btn-primary mt-2"
                 >
                   {loading ? "অপেক্ষা করুন..." : "লগইন"}
                 </button>
                 <Link to="/verify-email">পাসওয়ার্ড ভুলে গেছেন?</Link>
               </div>
-              <div class="d-flex justify-content-between mt-3">
+              <div className="d-flex justify-content-between mt-3">
                 <Google operation="Login" />
                 <Facebook operation="Login" />
               </div>

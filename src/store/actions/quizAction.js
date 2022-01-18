@@ -70,7 +70,7 @@ export const submitAnswer = time => {
     return axios
       .post("quiz/submit", { answerLists, endTime: time })
       .then(response => {
-        console.log(response);
+        // console.log(response, 'response');
         dispatch({
           type: SET_FINAL_RESULT,
           payload: response.data.message,

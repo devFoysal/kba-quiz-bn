@@ -222,6 +222,10 @@ header {
     border-radius: 5px;
     background-color: #736f6f;
 
+    @media screen and (max-width: 768px){
+      padding: 7px 55px;
+    }
+
     &:hover {
       background: #9c3;
       color: #fff;

@@ -7,7 +7,6 @@ import { setLogout } from "../store/actions/authAction";
 const Header = () => {
   const [sidebar, setSidebar] = useState(false);
   const isAuthenticated = useSelector((state) => state.auth.loggedIn);
-  console.log(sidebar);
   const dispatch = useDispatch();
   const handleClick = (e) => {
     setSidebar(true);
